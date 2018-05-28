@@ -12,6 +12,7 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma'),
       require('karma-phantomjs-launcher'),
+      require('karma-htmlfile-reporter')
     ],
     client:{
       clearContext: false // leave Jasmine Spec Runner output visible in browser
@@ -23,7 +24,15 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'html'],
+    htmlReporter: {
+      outputFile: './TestResults/index.html',
+      pageTitle: 'Unit Tests',
+      subPageTitle: 'Sample app unit tests result report',
+      groupSuites: true,
+      useCompactStyle: true,
+      useLegacyStyle: true
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
